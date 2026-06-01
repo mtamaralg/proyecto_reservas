@@ -6,7 +6,7 @@
                 {{recurso.nombre}}
             </li>
         </ul> 
-        <a href="recursosForm" >Añadir nuevo recurso </a>           
+        <router-link to="/recursos/nuevo">Añadir recurso</router-link>         
     </div>
 </template>
 

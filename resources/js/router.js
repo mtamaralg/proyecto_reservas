@@ -8,11 +8,11 @@ import ReservasList from './components/reservaList.vue';
 import TramosHorariosList from './components/tramosHorariosList.vue';
 
 // 2. IMPORTACIONES DE LOS COMPONENTES DE FORMULARIOS (Crear/Editar)
-import RecursosForm from './components/RecursosForm.vue';
-import CalendarioForm from './components/CalendarioForm.vue';
-import CategoriaForm from './components/CategoriaForm.vue';
-import ReservaForm from './components/ReservaForm.vue';
-import TramosHorariosForm from './components/TramosHorariosForm.vue';
+import RecursosForm from './components/recursosForm.vue';
+import CalendarioForm from './components/calendarioForm.vue';
+import CategoriaForm from './components/categoriaForm.vue';
+import ReservaForm from './components/reservaForm.vue';
+import TramosHorariosForm from './components/tramosHorariosForm.vue';
 
 
 // 3. DEFINICIÓN DE RUTAS (El GPS)

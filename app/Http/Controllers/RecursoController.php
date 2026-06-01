@@ -43,7 +43,7 @@ class RecursoController extends Controller
         $recurso = Recurso::create($request->all());
         
         // Devolvemos un mensaje de éxito junto con los datos del nuevo recurso y un código 201 (Created).
-        return response()->json(['mensaje' => 'Recurso creado', 'recurso' => $recurso], 201);
+        return response()->json(['recurso' => $recurso], 201);
     }
 
     /**
@@ -78,7 +78,7 @@ class RecursoController extends Controller
         $recurso->update($request->all());
         
         // Retornamos un mensaje de éxito y el recurso ya actualizado con estado 200 (OK).
-        return response()->json(['mensaje' => 'Recurso actualizado', 'recurso' => $recurso], 200);
+        return response()->json(['recurso' => $recurso], 200);
     }
 
     /**
@@ -91,6 +91,6 @@ class RecursoController extends Controller
         $recurso->delete();
         
         // Confirmamos que la acción se realizó con éxito mediante un JSON y estado 200.
-        return response()->json(['mensaje' => 'Recurso eliminado'], 200);
+        return response()->json("", 209);
     }
 }

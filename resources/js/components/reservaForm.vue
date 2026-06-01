@@ -66,9 +66,10 @@ export default {
   // Nuestro almacén de memoria
   data() {
     return {
-      // Molde vacío de una reserva
       reserva: {
         recurso_id: "",
+        usuario_id: "", 
+        tramo_horario_id: "", 
         fecha: "",
         hora_inicio: "",
         hora_fin: "",
@@ -76,7 +77,7 @@ export default {
       },
       mensaje: ""
     };
-  },
+},
 
   // Al cargar la pantalla, si hay ID, rescatamos los datos
   async mounted() {

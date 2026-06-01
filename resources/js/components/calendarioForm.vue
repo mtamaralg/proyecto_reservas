@@ -58,7 +58,8 @@ export default {
       calendario: {
         nombre: "",
         fecha_inicio: "",
-        fecha_fin: ""
+        fecha_fin: "",
+        calendario_id:""
       },
       mensaje: ""
     };

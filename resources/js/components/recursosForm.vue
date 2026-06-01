@@ -52,7 +52,8 @@ export default {
       // Molde vacío del recurso. ¡Añade aquí más campos si tu tabla de Laravel los tiene!
       recurso: {
         nombre: "",
-        descripcion: ""
+        descripcion: "",
+        categoria_id: 1
       },
       mensaje: ""
     };
@@ -69,7 +70,7 @@ export default {
     // Método para ir a buscar los datos antiguos si estamos editando
     async cargarRecurso() {
       try {
-        const respuesta = await fetch(`http://127.0.0.1:8000/api/recursos/${this.recursoId}`);
+        const respuesta = await fetch(`http://localhost/api/recursos/${this.recursoId}`);
         if (respuesta.ok) {
           // Rellenamos el formulario automáticamente
           this.recurso = await respuesta.json();
@@ -87,21 +88,23 @@ export default {
       try {
         // ¿Editamos (PUT) o creamos (POST)?
         const metodo = this.recursoId ? "PUT" : "POST";
+        console.log(metodo);
         
         // ¿A qué URL lo enviamos?
         const url = this.recursoId
-          ? `http://127.0.0.1:8000/api/recursos/${this.recursoId}`
-          : "http://127.0.0.1:8000/api/recursos";
-
+          ? `http://localhost/api/recursos/${this.recursoId}`
+          : "http://localhost/api/recursos";
+        console.log(url);
         // El cartero hace su trabajo
         const respuesta = await fetch(url, {
           method: metodo,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept": "application/json"
           },
           body: JSON.stringify(this.recurso)
         });
-
+        console.log(respuesta);
         // Comprobamos el semáforo
         if (respuesta.ok) {
           this.mensaje = this.recursoId 

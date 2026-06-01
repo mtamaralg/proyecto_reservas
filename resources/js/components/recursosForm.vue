@@ -122,7 +122,37 @@ export default {
         console.error("Error guardando recurso:", error);
         this.mensaje = "Error de conexión con el servidor.";
       }
+    },
+    async eliminarRecurso() {
+      // 1. Siempre es buena práctica pedir confirmación antes de borrar algo
+      if (!confirm("¿Estás seguro de que quieres eliminar este recurso? Esta acción no se puede deshacer.")) {
+        return; // Si el usuario cancela, detenemos la función aquí
+      }
+
+      try {
+        const url = `http://localhost/api/recursos/${this.recursoId}`;
+        
+        // El cartero envía la petición con el método DELETE
+        const respuesta = await fetch(url, {
+          method: "DELETE",
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (respuesta.ok) {
+          // Si todo va bien, no nos quedamos en esta pantalla porque el recurso ya no existe.
+          // Usamos this.$router.push para mandar al usuario de vuelta a la lista.
+          alert("¡Recurso eliminado correctamente!");
+          this.$router.push('/recursos');
+        } else {
+          this.mensaje = "Error al intentar eliminar el recurso.";
+        }
+      } catch (error) {
+        console.error("Error eliminando recurso:", error);
+        this.mensaje = "No se pudo conectar con el servidor.";
+      }
     }
-  }
+  },
 };
 </script>

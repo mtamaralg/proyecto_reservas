@@ -75,7 +75,7 @@ export default {
     // Buscar datos del tramo antiguo
     async cargarTramo() {
       try {
-        const respuesta = await fetch(`http://127.0.0.1:8000/api/tramos-horarios/${this.tramoId}`);
+        const respuesta = await fetch(`http://locahost/api/tramos-horarios/${this.tramoId}`);
         if (respuesta.ok) {
           this.tramo = await respuesta.json();
         } else {
@@ -93,13 +93,14 @@ export default {
         const metodo = this.tramoId ? "PUT" : "POST";
         
         const url = this.tramoId
-          ? `http://127.0.0.1:8000/api/tramos-horarios/${this.tramoId}`
-          : "http://127.0.0.1:8000/api/tramos-horarios";
+          ? `http://localhost/api/tramos-horarios/${this.tramoId}`
+          : "http://localhost/api/tramos-horarios";
 
         const respuesta = await fetch(url, {
           method: metodo,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept": "application/json"
           },
           body: JSON.stringify(this.tramo)
         });

@@ -68,7 +68,7 @@ export default {
     // Buscar datos antiguos
     async cargarCategoria() {
       try {
-        const respuesta = await fetch(`http://127.0.0.1:8000/api/categorias/${this.categoriaId}`);
+        const respuesta = await fetch(`http://localhost/api/categorias/${this.categoriaId}`);
         if (respuesta.ok) {
           this.categoria = await respuesta.json();
         } else {
@@ -86,13 +86,14 @@ export default {
         const metodo = this.categoriaId ? "PUT" : "POST";
         
         const url = this.categoriaId
-          ? `http://127.0.0.1:8000/api/categorias/${this.categoriaId}`
-          : "http://127.0.0.1:8000/api/categorias";
+          ? `http://lochalhost/api/categorias/${this.categoriaId}`
+          : "http://localhost/api/categorias";
 
         const respuesta = await fetch(url, {
           method: metodo,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept": "application/json"
           },
           body: JSON.stringify(this.categoria)
         });

@@ -90,7 +90,7 @@ export default {
     // Buscar datos de la reserva antigua
     async cargarReserva() {
       try {
-        const respuesta = await fetch(`http://127.0.0.1:8000/api/reservas/${this.reservaId}`);
+        const respuesta = await fetch(`http://localhost/api/reservas/${this.reservaId}`);
         if (respuesta.ok) {
           this.reserva = await respuesta.json();
         } else {
@@ -108,13 +108,14 @@ export default {
         const metodo = this.reservaId ? "PUT" : "POST";
         
         const url = this.reservaId
-          ? `http://127.0.0.1:8000/api/reservas/${this.reservaId}`
-          : "http://127.0.0.1:8000/api/reservas";
+          ? `http://localhost/api/reservas/${this.reservaId}`
+          : "http://localhost/api/reservas";
 
         const respuesta = await fetch(url, {
           method: metodo,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept": "application/json"
           },
           body: JSON.stringify(this.reserva)
         });

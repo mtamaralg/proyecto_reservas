@@ -76,7 +76,7 @@ export default {
     // Pide a Laravel los datos de este calendario específico
     async cargarCalendario() {
       try {
-        const respuesta = await fetch(`http://127.0.0.1:8000/api/calendarios/${this.calendarioId}`);
+        const respuesta = await fetch(`http://localhost/api/calendarios/${this.calendarioId}`);
         if (respuesta.ok) {
           this.calendario = await respuesta.json();
         } else {
@@ -94,13 +94,14 @@ export default {
         const metodo = this.calendarioId ? "PUT" : "POST";
         
         const url = this.calendarioId
-          ? `http://127.0.0.1:8000/api/calendarios/${this.calendarioId}`
-          : "http://127.0.0.1:8000/api/calendarios";
+          ? `http://localhost/api/calendarios/${this.calendarioId}`
+          : "http://localhost/api/calendarios";
 
         const respuesta = await fetch(url, {
           method: metodo,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept": "application/json"
           },
           body: JSON.stringify(this.calendario)
         });

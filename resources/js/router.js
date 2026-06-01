@@ -1,32 +1,55 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// 1. Importamos todos los componentes que hemos creado
-// (Nota: si a tus archivos les llamaste recursos.vue en lugar de RecursosList.vue, cámbialo aquí)
-// Fíjate bien en las rutas entre comillas, ¡ahora coinciden al 100% con tu foto!
+// 1. IMPORTACIONES DE LOS COMPONENTES DE LISTAS (Vistas principales)
 import CalendariosList from './components/calendarioList.vue';
 import CategoriasList from './components/categoriaList.vue';
 import RecursosList from './components/recursos.vue';
 import ReservasList from './components/reservaList.vue';
 import TramosHorariosList from './components/tramosHorariosList.vue';
-// 2. Definimos todas las rutas y el componente al que apuntan
+
+// 2. IMPORTACIONES DE LOS COMPONENTES DE FORMULARIOS (Crear/Editar)
+import RecursosForm from './components/RecursosForm.vue';
+import CalendarioForm from './components/CalendarioForm.vue';
+import CategoriaForm from './components/CategoriaForm.vue';
+import ReservaForm from './components/ReservaForm.vue';
+import TramosHorariosForm from './components/TramosHorariosForm.vue';
+
+
+// 3. DEFINICIÓN DE RUTAS (El GPS)
 const routes = [
-    // Si alguien entra a la raíz de la web (/), lo redirigimos automáticamente a recursos
+    // Redirección inicial
     { path: '/', redirect: '/recursos' },
     
-    // Tus 5 rutas principales
+    // --- RUTAS DE RECURSOS ---
     { path: '/recursos', component: RecursosList },
+    { path: '/recursos/nuevo', component: RecursosForm },
+    { path: '/recursos/:recursoId/editar', component: RecursosForm, props: true },
+
+    // --- RUTAS DE CATEGORÍAS ---
     { path: '/categorias', component: CategoriasList },
+    { path: '/categorias/nuevo', component: CategoriaForm },
+    { path: '/categorias/:categoriaId/editar', component: CategoriaForm, props: true },
+
+    // --- RUTAS DE CALENDARIOS ---
     { path: '/calendarios', component: CalendariosList },
+    { path: '/calendarios/nuevo', component: CalendarioForm },
+    { path: '/calendarios/:calendarioId/editar', component: CalendarioForm, props: true },
+
+    // --- RUTAS DE RESERVAS ---
     { path: '/reservas', component: ReservasList },
+    { path: '/reservas/nueva', component: ReservaForm },
+    { path: '/reservas/:reservaId/editar', component: ReservaForm, props: true },
+
+    // --- RUTAS DE TRAMOS HORARIOS ---
     { path: '/tramos-horarios', component: TramosHorariosList },
-    { path: '/recursosForm', component: recursosForm }
+    { path: '/tramos-horarios/nuevo', component: TramosHorariosForm },
+    { path: '/tramos-horarios/:tramoId/editar', component: TramosHorariosForm, props: true }
 ];
 
-// 3. Creamos el enrutador de Vue
+// 4. CREACIÓN Y EXPORTACIÓN DEL ENRUTADOR
 const router = createRouter({
     history: createWebHistory(),
     routes
 });
 
-// 4. Lo exportamos para poder conectarlo en el siguiente paso
 export default router;
